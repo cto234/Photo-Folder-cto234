@@ -1,0 +1,14 @@
+.home-link {
+	position: absolute;
+	top: 0.25em;
+	left: 0.75em;
+}
+
+
+header {
+	position: relative;
+	background-color: #ccddff;
+	margin: 0px;
+	height: 1.5em;
+	padding: 0.25em 1em 0em 1em;
+}

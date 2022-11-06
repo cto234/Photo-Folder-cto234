@@ -1,22 +1,21 @@
 import mongoose from 'mongoose'
+import mongooseSlugPlugin from 'mongoose-slug-plugin';
 
-const SongSchema = new mongoose.Schema({
-    //All this data will be read from spotify 
-    title: {type: String, required: true},
-    artist: {type: String, required: true},
-    album: {type: String, required: true},
-    plays: {type: Number, required: true}
+//Each image has an optional caption associated with it, and of course the url of the image itself
+const ImageSchema = new mongoose.Schema({
+    caption: {type: String, required: false},
+    url: {type: String, required: true}
 })
 
-const ListSchema = new mongoose.Schema({
-    //contains a list of songs. Multiple lists will be created based on different parameters
-    songs: [{SongSchema}]
+//Each folder contains an array of images, but can be empty. A title is requried for each folder.
+const FolderSchema = new mongoose.Schema({
+    images: [ImageSchema],
+    title: {type: String, required: true}
 })
 
-const user = new mongoose.Schema({
-    //each user has an array of lists - I haven't decided what they'll be yet but for example
-    //top songs all time, past month, first songs listened to on spotify, etc
-    //depends exactly what data is made available through the spotify API 
-    //I know # of plays is available at least
-    lists: [{type: mongoose.Schema.Types.ListSchema}]
-})
+FolderSchema.plugin(mongooseSlugPlugin, {tmpl: '<%=title%>'});
+
+mongoose.model('Image', ImageSchema);
+mongoose.model('Folder', FolderSchema);
+
+mongoose.connect('mongodb://127.0.0.1/final-project-cto234');
