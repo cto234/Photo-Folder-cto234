@@ -9,8 +9,9 @@ const ImageSchema = new mongoose.Schema({
 
 //Each folder contains an array of images, but can be empty. A title is requried for each folder.
 const FolderSchema = new mongoose.Schema({
-    images: [ImageSchema],
-    title: {type: String, required: true}
+    title: {type: String, required: true},
+    description: {type: String, required: false},
+    images: [ImageSchema]
 })
 
 FolderSchema.plugin(mongooseSlugPlugin, {tmpl: '<%=title%>'});
@@ -18,4 +19,6 @@ FolderSchema.plugin(mongooseSlugPlugin, {tmpl: '<%=title%>'});
 mongoose.model('Image', ImageSchema);
 mongoose.model('Folder', FolderSchema);
 
-mongoose.connect('mongodb://127.0.0.1/final-project-cto234');
+
+//connection to MongoDB Atlas - https://cloud.mongodb.com/v2/6361786d773fda03b90618ce#clusters
+mongoose.connect('mongodb+srv://cto234:DAIvyPcaHYTl46Z3@final.nzkn2yu.mongodb.net/?retryWrites=true&w=majority');

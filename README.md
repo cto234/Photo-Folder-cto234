@@ -1,34 +1,29 @@
-# Spotify Stats
+# Image Collector
 
 ## Overview
 
-Everybody loves stats - especially when they're YOUR stats! That's why Spotify Stats will let you connect to your spotify account and display fun statistics about your listening habits. Do you wonder which song you've listened to the most in the last 6 months? Or maybe how many minutes of music you listen to in an average week? Spotify Stats will show you this information and more!
+Your one stop to store and organize images you find on the web! Sort images into folders based on whatever criteria you want. Maybe you'd like to create a folder of images for your desktop background that you've found online, or cute pictures of cats that you don't want to lose. Whatever it may be, this web app will allow you to store all these images in a clean and organized fashion.
 
 ## Data Model
 
-This application will use Spotify's API to retrieve data assosciated with a given account. With this data it will display lists of song objects. Each song object will contain title, artist, and album data fields as well as teh data supplied by spotify such as number of plays.
+This application will be mainly made up of folders and images. Each folder contains a title and an array of image objects, and each image object contains a link to the image and an optional caption.
 
-
-An Example User:
+An Example Folder:
 
 ```javascript
 {
-  username: "spotify-user",
-  hash: // a password hash,
-  lists: // an array of references to List documents
+  title: 'cute-cats',
+  description: 'This is a folder for storing images of cute cats',
+  images: [{url: 'example.jpg', caption: 'OMG'}, {etc...}, {etc...}]
 }
 ```
 
-An Example List with Embedded Items:
+An Example Image:
 
 ```javascript
 {
-  user: // a reference to a User object
-  name: "Top Songs All Time",
-  items: [
-    { title: "Here Comes the Sun", artist: "The Beatles", plays: 145},
-    { title: "Who Loves the Sun", artist: "The Velvet Underground", plays: 107},
-  ],
+  url: 'example.jpg',
+  caption: 'OMG'
 }
 ```
 
@@ -38,43 +33,42 @@ An Example List with Embedded Items:
 
 ## Wireframes
 
-/login - Login page to connect to spotify account
+/login - Login page
 
-![login](documentation/login.jpeg)
+![login]()    TODO
 
-/lists - Main page that shows music lists
+/home - Home page shows all folders
 
-![lists](documentation/lists.jpeg)
+![home](documentation/)   TODO
+
+/folder/:slug - The contents of a folder
+
+![folder/:slug](documentation/)   TODO
 
 ## Site map
 
-(__TODO__: draw out a site map that shows how pages are related to each other)
-
-![Site Map](documentation/map.png)
+![Site Map](documentation/map.png)      TODO
 
 
 ## User Stories or Use Cases
 
-1. as non-registered user, I can login with my spotify account
-2. as a user, I can decide which list I want to view
-3. as a user, I can sort the list by time period (all time, month, week)
-4. as a user, I can view statistics for a given list 
+1. As a non-registered user I can register and set a username/password
+2. As a user I can create a new folder if one doesn't already exist
+3. As a user I can examine the contents of an existing folder
+4. As a user I can add and remove images to/from a folder
+5. As a user I can add captions to images and a description to folders
 
 ## Research Topics
 
-* (5 points) Integrate Spotify API
-  * Initial login by user
-  * Importing data from spotify into my db
-  * Manipulating this data to display sorted lists
-* (3 points) Find and use a good CSS library
-  * I want this site to look professional and have clean styling
-  * I also want to learn how to implement outside libraries for CSS because my only experince 
-  with CSS so far has always been tedious and never comes out looking particularly great
-
+* (2 points) Use SASS for CSS (might change to PostCSS to be more easily compatible with Tailwind)
+  * Working with CSS is usually pretty painful. I'd like to learn to use SASS to make the preprocessing a smoother and 
+  * More efficient process
+* (2 points) Tailwind as a CSS library
+  * See above, I'd like to explore options for creating aesthetically pleasing sites using external frameworks
+TODO: Add more research topics
 
 ## [Link to Initial Main Project File](app.mjs) 
 
 ## Annotations / References Used
 
 (__TODO__: list any tutorials/references/etc. that you've based your code off of)
-
