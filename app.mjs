@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.urlencoded({ extended: false }));
 
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, '../views'));
+app.set('views', path.join(__dirname, 'views'));
 
 const Image = mongoose.model('Image');
 const Folder = mongoose.model('Folder');
