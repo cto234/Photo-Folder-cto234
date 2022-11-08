@@ -35,19 +35,19 @@ An Example Image:
 
 /login - Login page
 
-![login]()    TODO
+![login](documentation/login.jpeg)    
 
 /home - Home page shows all folders
 
-![home](documentation/)   TODO
+![home](documentation/home-page.jpeg)   
 
 /folder/:slug - The contents of a folder
 
-![folder/:slug](documentation/)   TODO
+![folder/:slug](documentation/folder-contents.jpeg)   
 
 ## Site map
 
-![Site Map](documentation/map.png)      TODO
+![Site Map](documentation/site-map.jpeg)      
 
 
 ## User Stories or Use Cases
@@ -65,7 +65,10 @@ An Example Image:
   * More efficient process
 * (2 points) Tailwind as a CSS library
   * See above, I'd like to explore options for creating aesthetically pleasing sites using external frameworks
-TODO: Add more research topics
+* (3 points) Client-side form validation
+  * My project will rely on forms for users to upload their images. I'd like to validate that the tings they are uploading will work properly when rendered.
+* (3 points) Use vite or webpack to automate Sass
+  * This should make my code more concise by bundling assets like images and scripts.
 
 ## [Link to Initial Main Project File](app.mjs) 
 
