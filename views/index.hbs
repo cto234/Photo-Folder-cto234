@@ -1,5 +1,10 @@
-<ol>
-{{#each folders as |f|}}
-<li><a href="/article/{{slug}}">{{title}}</a></li>
-{{/each}}
-</ol>
+{{#if folders}}
+    <ol>
+    {{#each folders as |f|}}
+    <li><a href="/article/{{slug}}">{{title}}</a></li>
+    {{/each}}
+    </ol>
+
+    {{else}}
+    <p class="no-folder-message">No folders yet! Click 'Create new folder' to get started.</p>
+{{/if}}

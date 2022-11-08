@@ -1,23 +1,66 @@
-.home-link {
-	position: absolute;
-	top: 0.25em;
-	left: 0.75em;
-}
-
 .add-button {
-	position: absolute;
-	top: 0.25em;
-	left: 4em;
+  font: 100% Helvetica, sans-serif;
+  float: right;
+}
+.add-button a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 12px 14px;
+  text-decoration: none;
+  font-weight: lighter;
+}
+.add-button a:hover {
+  background-color: rgb(48, 132, 48);
 }
 
-header {
-	position: relative;
-	background-color: #ccddff;
-	margin: 0px;
-	height: 1.5em;
-	padding: 0.25em 1em 0em 1em;
+.home-link {
+  font: 100% Helvetica, sans-serif;
+  float: left;
+}
+.home-link a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 12px 14px;
+  text-decoration: none;
+  font-weight: lighter;
+}
+.home-link a:hover {
+  background-color: rgb(48, 132, 48);
 }
 
-h1 {
-    font-size: 100;
-  }
+h1.main-title {
+  font: 400% Helvetica, sans-serif;
+  font-weight: lighter;
+  text-align: center;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.top-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(31, 84, 31);
+}
+
+p.blurb {
+  font: 125% Helvetica, sans-serif;
+  font-weight: lighter;
+  text-align: center;
+  display: block;
+  margin: 0;
+}
+
+p.no-folder-message {
+  font: 90% Helvetica, sans-serif;
+  font-weight: lighter;
+  text-align: center;
+  display: block;
+  padding: 15em;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,4 +1,4 @@
-# Image Collector
+# Photo Folder
 
 ## Overview
 
