@@ -11,7 +11,7 @@ const ImageSchema = new mongoose.Schema({
 const FolderSchema = new mongoose.Schema({
     title: {type: String, required: true},
     description: {type: String, required: false},
-    images: [ImageSchema]
+    images: [{type: mongoose.Schema.Types.ObjectId, ref: 'Image' }]
 })
 
 FolderSchema.plugin(mongooseSlugPlugin, {tmpl: '<%=title%>'});

@@ -1,10 +1,14 @@
+<h1 class="main-title">Photo Folder</h2>
+<p class="blurb">A site for categorizing your images!</p>
+
+
 {{#if folders}}
     <ol>
     {{#each folders as |f|}}
-    <li><a href="/article/{{slug}}">{{title}}</a></li>
+    <li><a href="/folder/{{slug}}">{{title}}</a></li>
     {{/each}}
     </ol>
 
     {{else}}
-    <p class="no-folder-message">No folders yet! Click 'Create new folder' to get started.</p>
+    <p class="no-x-message">No folders yet! Click 'Create new folder' to get started.</p>
 {{/if}}

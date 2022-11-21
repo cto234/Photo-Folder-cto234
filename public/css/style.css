@@ -55,12 +55,104 @@ p.blurb {
   margin: 0;
 }
 
-p.no-folder-message {
+p.no-x-message {
   font: 90% Helvetica, sans-serif;
   font-weight: lighter;
   text-align: center;
   display: block;
   padding: 15em;
+}
+
+label.add-title {
+  font: 90% Helvetica, sans-serif;
+  font-weight: lighter;
+}
+
+h1.create {
+  font: 300% Helvetica, sans-serif;
+  font-weight: lighter;
+  text-align: center;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.add-box {
+  margin: 8px;
+  width: 300px;
+  padding: 20px;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.132);
+  border-radius: 20px;
+  display: grid;
+}
+
+.add-caption {
+  margin: 8px;
+  width: 300px;
+  padding: 20px;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.132);
+  border-radius: 20px;
+  display: grid;
+  height: 200px;
+}
+
+input[type=submit] {
+  margin: 8px;
+  width: 300px;
+  padding: 20px;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.132);
+  border-radius: 20px;
+  display: grid;
+  width: 340px;
+}
+
+h1.inner-title {
+  font: 300% Helvetica, sans-serif;
+  font-weight: lighter;
+  text-align: left;
+  display: block;
+  margin: 10px;
+  padding: 5px;
+  float: left;
+}
+
+.add-image-button {
+  margin: 15px;
+  width: 150px;
+  padding: 20px;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.197);
+  border-radius: 20px;
+  display: grid;
+  float: right;
+}
+
+.gallery {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  align-items: center;
+  justify-items: center;
+}
+
+.gallery img {
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  max-width: 100%;
+}
+
+.gallery li {
+  list-style-type: none;
+}
+
+.gallery p {
+  width: 425px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /*# sourceMappingURL=style.css.map */
