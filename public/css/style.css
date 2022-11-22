@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .add-button {
   font: 100% Helvetica, sans-serif;
   float: right;
@@ -154,9 +150,6 @@ h1.inner-title {
 
 .gallery p {
   width: 425px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 /*# sourceMappingURL=style.css.map */
