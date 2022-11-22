@@ -3,11 +3,11 @@
 
 
 {{#if folders}}
-    <ol>
+    <ul class="home-list">
     {{#each folders as |f|}}
     <li><a href="/folder/{{slug}}">{{title}}</a></li>
     {{/each}}
-    </ol>
+    </ul>
 
     {{else}}
     <p class="no-x-message">No folders yet! Click 'Create new folder' to get started.</p>

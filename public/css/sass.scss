@@ -76,9 +76,11 @@ label.add-title {
 h1.create {
     font: 300% $font-stack;
     font-weight: lighter;
-    text-align: center;
+    text-align: left;
     display: block;
-    margin: 0;
+    margin-left: 12px;
+    margin-top: 5px;
+    margin-bottom: 3px;
     padding: 0;
 }
 
@@ -107,6 +109,7 @@ h1.inner-title {
 }
 
 .add-image-button {
+    font: 20px $font-stack;
     margin: 15px;
     width:150px;
     padding:20px;
@@ -123,18 +126,37 @@ h1.inner-title {
     grid-gap: 20px;
     align-items: center;
     justify-items: center;
+    
+    img {
+        border: 1px solid #ccc;
+        box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+        max-width: 100%;
     }
-  .gallery img {
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
-    max-width: 100%;
-  }
-  .gallery li{
-    list-style-type: none;
-  }
-  .gallery p{
-    width: 425px;
-  }
+    li{
+        list-style-type: none;
+    }
+    p{
+        width: 425px;
+    }
+}
   
+ p.caption{
+    font: 14px $font-stack;
+    font-weight: lighter;
+}
 
+.home-list{
+    font: 300% $font-stack;
+    font-weight: 100;
+    margin-left: 75px;
+    list-style-type: none;
+
+    li{
+        padding: 10px 10px;
+    }
+    a{
+        color: black;
+        text-decoration-thickness: 3px;
+    }
+}
   

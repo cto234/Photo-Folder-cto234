@@ -83,10 +83,8 @@ app.post('/folder/:slug', (req, res) => {
                 if(err){
                     console.log(err);
                 }else{
-                    console.log("Adding this image: ", result);
+                    console.log("Adding image: ", result);
                     folder.images.push(result._id);//save image's id to the article whose page we're on
-                    console.log("To this folder: ", folder);
-                    console.log("Folder is: "+folder.images.length+" length");
                     folder.save((err, result) => {
                         const route = '/folder/'+req.params.slug;    //res.redirect('/folder/:slug') wasn't working. This does.
                         res.redirect(route); 
