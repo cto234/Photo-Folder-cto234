@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .add-button {
   font: 100% Helvetica, sans-serif;
   float: right;

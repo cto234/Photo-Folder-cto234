@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/nyu-csci-ua-0467-001-002-fall-2022/final-project-cto234#readme",
   "devDependencies": {
-    "eslint": "^8.26.0"
+    "eslint": "^8.26.0",
+    "tailwindcss": "^3.2.4"
   },
   "dependencies": {
     "express": "^4.18.2",
