@@ -11,7 +11,7 @@ $font-stack: Helvetica, sans-serif;
         font-weight: lighter;
     }
     a:hover {
-        background-color: rgb(48, 132, 48);
+        background-color: rgb(109, 159, 212);
     }
 }
 
@@ -23,6 +23,17 @@ $font-stack: Helvetica, sans-serif;
     box-shadow:0 0 15px 4px rgba(0, 0, 0, 0.132);
     border-radius:20px;
     display: grid;
+}
+
+@mixin title {
+    font: 300% $font-stack;
+    font-weight: lighter;
+    text-align: left;
+    display: block;
+    margin-left: 12px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    padding: 0;
 }
 
 .add-button {
@@ -49,7 +60,7 @@ h1.main-title{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgb(31, 84, 31);
+    background-color: rgb(65, 137, 214);
   }
 
 p.blurb {
@@ -74,14 +85,7 @@ label.add-title {
 }
 
 h1.create {
-    font: 300% $font-stack;
-    font-weight: lighter;
-    text-align: left;
-    display: block;
-    margin-left: 12px;
-    margin-top: 5px;
-    margin-bottom: 3px;
-    padding: 0;
+    @include title;
 }
 
 .add-box {
@@ -158,5 +162,44 @@ h1.inner-title {
         color: black;
         text-decoration-thickness: 3px;
     }
+}
+
+.login-box, .register-box{
+    @include box;
+    }
+
+h1.login-title{
+    @include title;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+.login, .register{
+    @include title;
+}
+
+.reg-title{
+    @include title;
+    margin-top: 65px;
+}
+
+.reg-box{
+    @include box;
+}
+
+.error{
+    font: 100% $font-stack;
+    padding: 10px;
+}
+   
+.sign-out{
+    font: 75% $font-stack;
+    position:absolute;
+    bottom:0;
+    right:0;
+    padding: 8px;
+    text-decoration: underline;
 }
   

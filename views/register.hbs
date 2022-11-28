@@ -1,0 +1,14 @@
+<h1 class="main-title">Photo Folder</h2>
+<p class="blurb">A site for categorizing your images!</p>
+<h1 class="reg-title">Register</h1>
+
+<form method="post" action="register">
+    <input class="reg-box" type="text" id="text" name="username" value="" placeholder="Username">
+    <input class="reg-box" type="password" id="password" name="password" value="" placeholder="Password">
+    <input class="reg-box" type="password" id="password" name="password-confirm" value="" placeholder="Confirm password">
+    <input class="reg-submit" type="submit" value="Register">
+</form>
+
+{{#if message}}
+<div class="error">{{ message }}</div>
+{{/if}}

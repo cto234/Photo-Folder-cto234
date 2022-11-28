@@ -1,0 +1,13 @@
+<h1 class="main-title">Photo Folder</h2>
+<p class="blurb">A site for categorizing your images!</p>
+<h1 class="login-title">Login</h1>
+
+<form method="post" action="login">
+    <input class="login-box" type="text" id="text" name="username" value="" placeholder="Username">
+    <input class="login-box" type="password" id="text" name="password" value="" placeholder="Password">
+    <input class="login-submit" type="submit" value="Login">    
+</form>
+
+{{#if message}}
+<h2 class="error">{{ message }}</h2>
+{{/if}}

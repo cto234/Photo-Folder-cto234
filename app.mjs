@@ -5,23 +5,49 @@ import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url';
 import { ppid } from 'process';
+import * as auth from './auth.mjs';
+
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
+app.use(session({
+    secret: 'hullo',
+    resave: false,
+    saveUninitialized: true,
+}));
 
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
+const User = mongoose.model('User')
 const Image = mongoose.model('Image');
 const Folder = mongoose.model('Folder');
+
+const loginMessages = {"PASSWORDS DO NOT MATCH": 'Incorrect password', "USER NOT FOUND": 'User doesn\'t exist'};
+const registrationMessages = {"USERNAME ALREADY EXISTS": "Username already exists", "USERNAME PASSWORD TOO SHORT": "Username or password is too short"};
+
 
 //=======       ^ APP  SETUP ^     ==============================================//
 //-------------------------------------------------------------------------------//
 //=======       v MIDDLEWARE v     ==============================================//
 
+//From hw5
+//require authentication to access certain paths:       --param is array of paths
+app.use(auth.authRequired(
+    ['/',
+    '/add']));
+
+//From hw5
+// make {{user}} variable available for all paths
+/*
+app.use((req, res, next) => {
+    res.locals.user = req.session.user;
+    next();
+  });
+  */
 
 
 //=======       ^ MIDDLEWARE ^     ==============================================//
@@ -29,16 +55,19 @@ const Folder = mongoose.model('Folder');
 //=======       v ROUTE HANDLERS v ==============================================//
 
 app.get('/', (req, res) => {                //home page
-    Folder.find({}).sort('-createdAt').exec((err, folders) => {
-        res.render('index', {home: true, folders: folders});
-      });});
+
+    Folder.find({user: req.session.user}).sort('-createdAt').exec((err, folders) => {
+        res.render('index', {user: req.session.user, folders: folders});
+      });
+      
+});    
 
 app.get('/add', (req, res) => {             //add folder page
     res.render('add');
 })
 
 app.post('/add', (req, res) => {
-    const newFolder = new Folder({ title: req.body.title });   
+    const newFolder = new Folder({ user: req.session.user, title: req.body.title });   
     newFolder.save((err, result) => {
         if(err){
             console.log(err);
@@ -100,6 +129,62 @@ app.post('/folder/:slug', (req, res) => {
 app.get('/folder/:slug/add-image', (req, res) => {
     res.render('add-image', {slug: req.params.slug});
 })
+
+//---------------------login stuff--------------------//
+app.get('/sign', (req, res) => {
+    res.render('sign', {sign: true});
+})
+
+app.get('/login', (req, res) => {
+    res.render('login', {sign: true});
+});
+
+app.post('/login', (req, res) => {
+  // setup callbacks for login success and error
+  function success(user) {
+    auth.startAuthenticatedSession(req, user, (err) => {
+      if(!err) {
+        res.redirect('/'); 
+      } else {
+        res.render('error', {message: 'error starting auth sess: ' + err}); 
+      }
+    }); 
+  }
+
+  function error(err) {
+    res.render('login', {sign: true, message: loginMessages[err.message] || 'Login unsuccessful'}); 
+  }
+
+  // attempt to login
+  auth.login(req.body.username, req.body.password, error, success);
+});
+
+app.get('/register', (req, res) => {
+    res.render('register', {sign: true});
+  });
+  
+  app.post('/register', (req, res) => {
+    // setup callbacks for register success and error
+    function success(newUser) {
+      auth.startAuthenticatedSession(req, newUser, (err) => {
+          if (!err) {
+            console.log("redirecting to home after registering...");
+              res.redirect('/');
+          } else {
+              res.render('error', {message: 'err authing???'}); 
+          }
+      });
+    }
+  
+    function error(err) {
+      res.render('register', {sign: true, message: registrationMessages[err.message] ?? 'Registration error'}); 
+    }
+  
+    // attempt to register new user
+    auth.register(req.body.username, req.body.password, error, success);
+  });
+//---------------------login stuff--------------------//
+
 
 //=======       ^ ROUTE HANDLERS ^ ==============================================//
 

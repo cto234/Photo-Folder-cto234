@@ -11,7 +11,7 @@
   font-weight: lighter;
 }
 .add-button a:hover {
-  background-color: rgb(48, 132, 48);
+  background-color: rgb(109, 159, 212);
 }
 
 .home-link {
@@ -27,7 +27,7 @@
   font-weight: lighter;
 }
 .home-link a:hover {
-  background-color: rgb(48, 132, 48);
+  background-color: rgb(109, 159, 212);
 }
 
 h1.main-title {
@@ -44,7 +44,7 @@ h1.main-title {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: rgb(31, 84, 31);
+  background-color: rgb(65, 137, 214);
 }
 
 p.blurb {
@@ -169,6 +169,79 @@ p.caption {
 .home-list a {
   color: black;
   text-decoration-thickness: 3px;
+}
+
+.login-box, .register-box {
+  margin: 8px;
+  width: 300px;
+  padding: 20px;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.132);
+  border-radius: 20px;
+  display: grid;
+}
+
+h1.login-title {
+  font: 300% Helvetica, sans-serif;
+  font-weight: lighter;
+  text-align: left;
+  display: block;
+  margin-left: 12px;
+  margin-top: 5px;
+  margin-bottom: 3px;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.login, .register {
+  font: 300% Helvetica, sans-serif;
+  font-weight: lighter;
+  text-align: left;
+  display: block;
+  margin-left: 12px;
+  margin-top: 5px;
+  margin-bottom: 3px;
+  padding: 0;
+}
+
+.reg-title {
+  font: 300% Helvetica, sans-serif;
+  font-weight: lighter;
+  text-align: left;
+  display: block;
+  margin-left: 12px;
+  margin-top: 5px;
+  margin-bottom: 3px;
+  padding: 0;
+  margin-top: 65px;
+}
+
+.reg-box {
+  margin: 8px;
+  width: 300px;
+  padding: 20px;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.132);
+  border-radius: 20px;
+  display: grid;
+}
+
+.error {
+  font: 100% Helvetica, sans-serif;
+  padding: 10px;
+}
+
+.sign-out {
+  font: 75% Helvetica, sans-serif;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 8px;
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=style.css.map */
