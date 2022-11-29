@@ -110,13 +110,16 @@ const login = (username, password, errorCallback, successCallback) => {
 // creates middleware that redirects to login if path is included in authRequiredPaths
 const authRequired = authRequiredPaths => {
   return (req, res, next) => {
-    if(authRequiredPaths.includes(req.path)) {
+    if(!authRequiredPaths.includes(req.path)) {
       if(!req.session.user) {
         res.redirect('/sign'); 
-      } else {
+      }
+      else {
         next(); 
       }
-    } else {
+    } 
+    
+    else {
       next(); 
     }
   };

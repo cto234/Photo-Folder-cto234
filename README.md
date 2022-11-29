@@ -66,7 +66,7 @@ An Example Image:
 * (2 points) Tailwind as a CSS library
   * See above, I'd like to explore options for creating aesthetically pleasing sites using external frameworks
 * (3 points) Client-side form validation
-  * My project will rely on forms for users to upload their images. I'd like to validate that the tings they are uploading will work properly when rendered.
+  * My project will rely on forms for users to upload their images. I'd like to validate that the things they are uploading will work properly when rendered.
 * (3 points) Use vite or webpack to automate Sass
   * This should make my code more concise by bundling assets like images and scripts.
 
@@ -74,4 +74,4 @@ An Example Image:
 
 ## Annotations / References Used
 
-(__TODO__: list any tutorials/references/etc. that you've based your code off of)
+Authentication/login process: Homework 5

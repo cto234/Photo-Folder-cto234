@@ -202,4 +202,22 @@ a{
     padding: 8px;
     text-decoration: underline;
 }
+.logged-in-as{
+    font: 85% $font-stack;
+    position:absolute;
+    bottom:0;
+    right:0;
+    padding: 8px;
+}
+
+.error{
+    font: 400% $font-stack;
+    font-weight: 1000;
+    text-align: center;
+}
+.error-message{
+    font: 200% $font-stack;
+    font-weight: 100;
+    text-align: center;
+}
   

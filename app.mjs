@@ -36,18 +36,21 @@ const registrationMessages = {"USERNAME ALREADY EXISTS": "Username already exist
 
 //From hw5
 //require authentication to access certain paths:       --param is array of paths
+//unlike homework, this is list onf acceptable paths (there's much less of them)
+
 app.use(auth.authRequired(
-    ['/',
-    '/add']));
+    ['/sign',
+    '/login',
+    '/register'
+]));
 
 //From hw5
 // make {{user}} variable available for all paths
-/*
 app.use((req, res, next) => {
     res.locals.user = req.session.user;
     next();
   });
-  */
+
 
 
 //=======       ^ MIDDLEWARE ^     ==============================================//
@@ -56,7 +59,7 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {                //home page
 
-    Folder.find({user: req.session.user}).sort('-createdAt').exec((err, folders) => {
+    Folder.find({user: req.session.user.username}).sort('-createdAt').exec((err, folders) => {
         res.render('index', {user: req.session.user, folders: folders});
       });
       
@@ -67,11 +70,11 @@ app.get('/add', (req, res) => {             //add folder page
 })
 
 app.post('/add', (req, res) => {
-    const newFolder = new Folder({ user: req.session.user, title: req.body.title });   
+    const newFolder = new Folder({ user: req.session.user.username, title: req.body.title });   
     newFolder.save((err, result) => {
         if(err){
             console.log(err);
-            res.render('error', {message: 'Error adding article'}); 
+            res.render('error', {message: 'Error adding folder'}); 
         }else{
             console.log(result);
             console.log(result.title + " created successfully");
@@ -86,7 +89,13 @@ app.get('/folder/:slug', (req, res) => {
     .exec((err, folder) => {
         if(err){
             console.log(err);
-        }else{
+        }
+        else if(folder.user !== req.session.user.username){
+            res.render('error', {message: 'Cannot open folder. That folder belongs to a different user'});
+        }
+        else{
+            console.log('folder.user ', folder.user)
+            console.log('req.session.user.username ', req.session.user.username)
             res.render('folder-contents', {
             title: folder.title,
             slug: folder.slug,
@@ -111,7 +120,11 @@ app.post('/folder/:slug', (req, res) => {
             Folder.findOne({slug: req.params.slug}, function(err, folder){
                 if(err){
                     console.log(err);
-                }else{
+                }
+                else if(folder.user !== req.session.user.username){
+                    res.render('error', {message: 'Cannot add to this folder. This folder belongs to a different user'});
+                }
+                else{
                     console.log("Adding image: ", result);
                     folder.images.push(result._id);//save image's id to the article whose page we're on
                     folder.save((err, result) => {
@@ -130,8 +143,31 @@ app.get('/folder/:slug/add-image', (req, res) => {
     res.render('add-image', {slug: req.params.slug});
 })
 
+app.get('/folder/:slug/edit-title', (req, res) => {
+    res.render('edit-title', {slug: req.params.slug});
+})
+
+app.post('/folder/:slug/edit-title', (req, res) => {
+    Folder.findOne({slug: req.params.slug}) 
+    .exec((err, folder) => {
+        console.log('Editing title. Original: ',folder);
+        folder.title = req.body.newTitle;
+        folder.save((err, result) => {
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log('New title: ', result);
+                const newRoute = '/folder/'+result.slug;
+                res.redirect(newRoute);
+            }
+        })
+    })
+})
+
 //---------------------login stuff--------------------//
 app.get('/sign', (req, res) => {
+    req.session.user = undefined;               //log out
     res.render('sign', {sign: true});
 })
 

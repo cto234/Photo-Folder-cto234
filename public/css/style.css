@@ -244,4 +244,24 @@ a {
   text-decoration: underline;
 }
 
+.logged-in-as {
+  font: 85% Helvetica, sans-serif;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 8px;
+}
+
+.error {
+  font: 400% Helvetica, sans-serif;
+  font-weight: 1000;
+  text-align: center;
+}
+
+.error-message {
+  font: 200% Helvetica, sans-serif;
+  font-weight: 100;
+  text-align: center;
+}
+
 /*# sourceMappingURL=style.css.map */
