@@ -34,15 +34,25 @@ const registrationMessages = {"USERNAME ALREADY EXISTS": "Username already exist
 //-------------------------------------------------------------------------------//
 //=======       v MIDDLEWARE v     ==============================================//
 
+const paths = [
+'/add-image', 
+'/add', 
+'/edit-title', 
+'/error', 
+'/folder-contents',
+'/index',
+'/layout', 
+'/login',
+'/register',
+'/sign']
+
+const blocked = paths.filter(path => ['/sign', '/login', '/register'].includes(path)); //higher order function (filter)
+
 //From hw5
 //require authentication to access certain paths:       --param is array of paths
 //unlike homework, this is list onf acceptable paths (there's much less of them)
 
-app.use(auth.authRequired(
-    ['/sign',
-    '/login',
-    '/register'
-]));
+app.use(auth.authNotRequired(blocked));
 
 //From hw5
 // make {{user}} variable available for all paths
@@ -52,10 +62,9 @@ app.use((req, res, next) => {
   });
 
 
-
 //=======       ^ MIDDLEWARE ^     ==============================================//
 //-------------------------------------------------------------------------------//
-//=======       v ROUTE HANDLERS v ==============================================//
+//=======     v ROUTE HANDLERS v   ==============================================//
 
 app.get('/', (req, res) => {                //home page
 
@@ -70,7 +79,10 @@ app.get('/add', (req, res) => {             //add folder page
 })
 
 app.post('/add', (req, res) => {
-    const newFolder = new Folder({ user: req.session.user.username, title: req.body.title });   
+    const newFolder = new Folder({ 
+        user: req.session.user.username,
+        title: req.body.title,
+        description: req.body.description });   
     newFolder.save((err, result) => {
         if(err){
             console.log(err);
@@ -94,11 +106,10 @@ app.get('/folder/:slug', (req, res) => {
             res.render('error', {message: 'Cannot open folder. That folder belongs to a different user'});
         }
         else{
-            console.log('folder.user ', folder.user)
-            console.log('req.session.user.username ', req.session.user.username)
             res.render('folder-contents', {
             title: folder.title,
             slug: folder.slug,
+            description: folder.description,
             images: folder.images
             });
         }     
@@ -144,14 +155,18 @@ app.get('/folder/:slug/add-image', (req, res) => {
 })
 
 app.get('/folder/:slug/edit-title', (req, res) => {
-    res.render('edit-title', {slug: req.params.slug});
+    Folder.findOne({slug: req.params.slug}) 
+    .exec((err, folder) => {
+        res.render('edit-title', {folder: folder});
+    })
 })
 
 app.post('/folder/:slug/edit-title', (req, res) => {
     Folder.findOne({slug: req.params.slug}) 
     .exec((err, folder) => {
         console.log('Editing title. Original: ',folder);
-        folder.title = req.body.newTitle;
+        folder.title = req.body.newTitle||folder.title; //keeps old title if no input
+        folder.description = req.body.newDescription;
         folder.save((err, result) => {
             if(err){
                 console.log(err);
@@ -222,9 +237,6 @@ app.get('/register', (req, res) => {
 //---------------------login stuff--------------------//
 
 
-//=======       ^ ROUTE HANDLERS ^ ==============================================//
-
-
-
+//=======    ^ ROUTE HANDLERS ^    ==============================================//
 
 app.listen(process.env.PORT || 3000);

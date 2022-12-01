@@ -264,4 +264,22 @@ a {
   text-align: center;
 }
 
+.folder-description {
+  font: 100% Helvetica, sans-serif;
+  font-weight: lighter;
+  text-align: left;
+  display: block;
+  margin-left: 20px;
+  margin-top: 32px;
+  padding: 10px;
+  float: left;
+}
+
+.log {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+}
+
 /*# sourceMappingURL=style.css.map */

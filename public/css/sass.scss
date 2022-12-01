@@ -220,4 +220,21 @@ a{
     font-weight: 100;
     text-align: center;
 }
+
+.folder-description{
+    font: 100% $font-stack;
+    font-weight: lighter;
+    text-align: left;
+    display: block;
+    margin-left: 20px;
+    margin-top: 32px;
+    padding: 10px;
+    float: left;
+}
   
+.log{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+}

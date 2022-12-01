@@ -107,10 +107,10 @@ const login = (username, password, errorCallback, successCallback) => {
    });
 };
 
-// creates middleware that redirects to login if path is included in authRequiredPaths
-const authRequired = authRequiredPaths => {
+// creates middleware that redirects to login if path is not included in authNotRequiredPaths
+const authNotRequired = authNotRequiredPaths => {
   return (req, res, next) => {
-    if(!authRequiredPaths.includes(req.path)) {
+    if(!authNotRequiredPaths.includes(req.path)) {
       if(!req.session.user) {
         res.redirect('/sign'); 
       }
@@ -129,5 +129,5 @@ export {
   startAuthenticatedSession,
   register,
   login,
-  authRequired
+  authNotRequired
 };

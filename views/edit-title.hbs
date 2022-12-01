@@ -1,7 +1,8 @@
-<h1 class="create">{{slug}} - Edit title</h1>
-<form method="POST" action="/folder/{{slug}}/edit-title">
+<h1 class="create">{{folder.title}} - Edit title</h1>
+<form method="POST" action="/folder/{{folder.slug}}/edit-title">
 	<div class="add">
 		<input class="add-box" type="text" id="title" name="newTitle" value="" placeholder="New Title">
+		<textarea class="add-caption" type="text" id="caption" name="newDescription" value="" placeholder="Edit description"></textarea>
 		<input type="submit" value="Confirm">
 	</div>
 </form>
