@@ -64,12 +64,12 @@ An Example Image:
 * (2 points) Use SASS for CSS (might change to PostCSS to be more easily compatible with Tailwind)
   * Working with CSS is usually pretty painful. I'd like to learn to use SASS to make the preprocessing a smoother and 
   * More efficient process
+* (3 points) dotenv for configuration management
+  * Although not much, there are a few things that should be stored in a seperate .env file instead of being directly in code such as port and mongo server info.
 * (2 points) Tailwind as a CSS library
   * See above, I'd like to explore options for creating aesthetically pleasing sites using external frameworks
-* (3 points) Client-side form validation
-  * My project will rely on forms for users to upload their images. I'd like to validate that the things they are uploading will work properly when rendered.
-* (3 points) Use vite or webpack to automate Sass
-  * This should make my code more concise by bundling assets like images and scripts.
+
+
 
 ## [Link to Initial Main Project File](app.mjs) 
 

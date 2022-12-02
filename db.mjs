@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
 import mongooseSlugPlugin from 'mongoose-slug-plugin';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 
 const UserSchema = new mongoose.Schema({
@@ -30,4 +32,4 @@ mongoose.model('Folder', FolderSchema);
 
 
 //connection to MongoDB Atlas - https://cloud.mongodb.com/v2/6361786d773fda03b90618ce#clusters
-mongoose.connect('mongodb+srv://cto234:DAIvyPcaHYTl46Z3@final.nzkn2yu.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect(process.env.MONGO_KEY);

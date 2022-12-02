@@ -6,7 +6,8 @@ import path from 'path'
 import { fileURLToPath } from 'url';
 import { ppid } from 'process';
 import * as auth from './auth.mjs';
-
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -29,6 +30,7 @@ const Folder = mongoose.model('Folder');
 const loginMessages = {"PASSWORDS DO NOT MATCH": 'Incorrect password', "USER NOT FOUND": 'User doesn\'t exist'};
 const registrationMessages = {"USERNAME ALREADY EXISTS": "Username already exists", "USERNAME PASSWORD TOO SHORT": "Username or password is too short"};
 
+console.log(process.env.PORT);
 
 //=======       ^ APP  SETUP ^     ==============================================//
 //-------------------------------------------------------------------------------//
