@@ -57,14 +57,16 @@ const paths = [
 '/register',
 '/sign']
 
-const blocked = paths.filter(path => ['/sign', '/login', '/register'].includes(path)); //higher order function (filter)
+const allowedPaths = [process.env.SIGN_PATH, process.env.LOGIN_PATH, process.env.REG_PATH];
+
+const filteredPaths = paths.filter(path => allowedPaths.includes(path)); //higher order function (filter)
 
 
 //From hw5
 //require authentication to access certain paths:       --param is array of paths
 //unlike homework, this is list onf acceptable paths (there's much less of them)
 
-app.use(auth.authNotRequired(blocked));
+app.use(auth.authNotRequired(filteredPaths));
 
 //From hw5
 // make {{user}} variable available for all paths

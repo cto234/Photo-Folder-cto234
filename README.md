@@ -61,13 +61,11 @@ An Example Image:
 
 ## Research Topics
 
-* (2 points) Use SASS for CSS (might change to PostCSS to be more easily compatible with Tailwind)
+* (2 points) Use SASS for CSS 
   * Working with CSS is usually pretty painful. I'd like to learn to use SASS to make the preprocessing a smoother and 
   * More efficient process
 * (3 points) dotenv for configuration management
   * Although not much, there are a few things that should be stored in a seperate .env file instead of being directly in code such as port and mongo server info.
-* (2 points) Tailwind as a CSS library
-  * See above, I'd like to explore options for creating aesthetically pleasing sites using external frameworks
 
 
 
@@ -76,3 +74,5 @@ An Example Image:
 ## Annotations / References Used
 
 Authentication/login process: Homework 5
+dotenv documentation: https://www.npmjs.com/package/dotenv 
+SASS documentation: https://sass-lang.com/documentation/ (proof of running on save is in documentation folder in repo)
