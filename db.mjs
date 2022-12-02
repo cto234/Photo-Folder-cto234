@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
 const ImageSchema = new mongoose.Schema({
     caption: {type: String, required: false},
     url: {type: String, required: true}
-})
+});
 
 //Each folder contains an array of images, but can be empty. A title is requried for each folder.
 const FolderSchema = new mongoose.Schema({
@@ -20,7 +20,7 @@ const FolderSchema = new mongoose.Schema({
     title: {type: String, required: true},
     description: {type: String, required: false},
     images: [{type: mongoose.Schema.Types.ObjectId, ref: 'Image' }]
-})
+});
 
 FolderSchema.plugin(mongooseSlugPlugin, {tmpl: '<%=title%>'});
 

@@ -32,7 +32,16 @@ const registrationMessages = {"USERNAME ALREADY EXISTS": "Username already exist
 
 //=======       ^ APP  SETUP ^     ==============================================//
 //-------------------------------------------------------------------------------//
-//=======       v MIDDLEWARE v     ==============================================//
+//=======  v MIDDLEWARE/Classes v  ==============================================//
+
+class FolderObj{
+    constructor(title, slug, description, images){
+        this.title = title,
+        this.slug = slug,
+        this.description = description,
+        this.images = images
+    }
+}
 
 const paths = [
 '/add-image', 
@@ -47,6 +56,7 @@ const paths = [
 '/sign']
 
 const blocked = paths.filter(path => ['/sign', '/login', '/register'].includes(path)); //higher order function (filter)
+
 
 //From hw5
 //require authentication to access certain paths:       --param is array of paths
@@ -106,16 +116,11 @@ app.get('/folder/:slug', (req, res) => {
             res.render('error', {message: 'Cannot open folder. That folder belongs to a different user'});
         }
         else{
-            res.render('folder-contents', {
-            title: folder.title,
-            slug: folder.slug,
-            description: folder.description,
-            images: folder.images
-            });
+            const folderObj = new FolderObj(folder.title, folder.slug, folder.description, folder.images);
+            res.render('folder-contents', folderObj);
         }     
     });
 });
-    
 
 app.post('/folder/:slug', (req, res) => {
     const newImage = new Image({
@@ -145,7 +150,6 @@ app.post('/folder/:slug', (req, res) => {
                     
                 }
             });
-
         }
     })
 })

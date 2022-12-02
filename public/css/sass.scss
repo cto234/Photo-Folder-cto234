@@ -46,6 +46,10 @@ $font-stack: Helvetica, sans-serif;
     float: left;
 }
 
+body{
+    background-color: rgb(214, 218, 223);
+}
+
 h1.main-title{ 
     font: 400% $font-stack;
     font-weight: lighter;
